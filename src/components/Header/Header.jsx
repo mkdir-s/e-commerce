@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
 
 const Header = () => {
+  const {amount} = useContext(CartContext);
   return (
-    <div>Header</div>
+    <div>{amount}</div>
   )
 }
 
