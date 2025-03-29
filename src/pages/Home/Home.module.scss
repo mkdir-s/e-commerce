@@ -1,6 +1,63 @@
 .home {
   padding: 50px 0;
 }
+
+.categories {
+  padding-bottom: 20px;
+
+  &Title {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  &List {
+    display: flex;
+    gap: 20px;
+  }
+  &Button {
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
+
+.searchBar input {
+  width: 400px;
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  outline: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+.pagination {
+  margin-top: 70px;
+  text-align: center;
+
+  span {
+    margin: 0 30px;
+    font-size: 20px;
+  }
+  button {
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+  }
+}
+.notFound {
+  font-size: 25px;
+  font-weight: 600px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -15,4 +72,5 @@
     gap: 20px;
   }
 }
+
 

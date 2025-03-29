@@ -32,7 +32,7 @@ const Cart = () => {
         <div className={styles.bottom}>
           <p className={styles.total}>
             <span>Total: </span>
-            {total} $
+            {total.toFixed(2)} $
           </p>
           <a href="#" className={styles.button}>
             Checkout
