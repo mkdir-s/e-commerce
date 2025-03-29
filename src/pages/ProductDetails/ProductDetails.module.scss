@@ -1,0 +1,68 @@
+.notFound {
+  padding-bottom: 100px;
+}
+.text {
+  text-align: center;
+  padding: 100px 0;
+  font-weight: 600;
+  font-size: 30px;
+}
+
+.details {
+  padding: 100px 0;
+}
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+}
+.img {
+  width: 30%;
+
+  img {
+    width: 100%;
+  }
+}
+.info {
+  max-width: 600px;
+}
+.title {
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.descr {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #444;
+}
+.price {
+  color: #D9455F;
+  font-size: 25px;
+  font-weight: 600;
+}
+.category {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+}
+
+.button {
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 15px 30px;
+  background-color: #000;
+  color: #fff;
+  transition: all .3s;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+}
+.bottom {
+  text-align: center;
+}
