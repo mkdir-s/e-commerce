@@ -4,13 +4,26 @@ import styles from './Home.module.scss';
 import ProductCard from '../../components/ProductCard/ProductCard';
 
 const ITEMS_PER_PAGE = 6; 
+const LOCAL_STORAGE_KEY = 'product_filters'; 
 
 const Home = () => {
   const {products} = useContext(ProductContext);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    const savedFilters = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    return savedFilters?.category || 'all';
+  });
+
+  useEffect(() => {
+    const filters = {
+      category: selectedCategory,
+      searchQuery,
+      currentPage,
+    };
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(filters));
+  }, [selectedCategory, searchQuery, currentPage]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -25,6 +38,8 @@ const Home = () => {
     };
     fetchCategories();
   }, []);
+
+
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => {
