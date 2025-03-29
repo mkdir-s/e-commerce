@@ -1,9 +1,10 @@
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
+import { CartContext } from '../../contexts/CartContext';
 
 const ProductCard = ({product}) => {
-  console.log(product)
+  const {addToCart} = useContext(CartContext);
   const {id, image, category, title, price} = product;
   return (
     <Link className={styles.card} to={`/product/${id}`}>
@@ -16,7 +17,7 @@ const ProductCard = ({product}) => {
         <p className={styles.cardRight} onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          console.log('click +')
+          addToCart(product, id);
         }}>+</p>
       </div>
     </Link>
