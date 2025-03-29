@@ -9,13 +9,14 @@
  - Страница товара `/product/:id`
  - Страницу корзины `/cart`
  - Пагинация: отображение по 6 товаров на страницу
+ - Сортировку по цене (возрастание/убывание)
  - Сохранение состояния в localStorage: корзина, выбранные фильтры
  
  
 
 <details>
   <summary>Демо страниц</summary>
-![1](https://i.imgur.com/UFCm9dq.png)
+![1](https://i.imgur.com/6vzWpj3.png)
 ![2](https://i.imgur.com/nK9sG1g.png)
 ![3](https://i.imgur.com/wUBlzau.png)
 </details>
