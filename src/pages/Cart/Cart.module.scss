@@ -48,3 +48,12 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+@media (max-width: 450px) {
+  .total {
+    font-size: 18px;
+  }
+  .button {
+    padding: 7px 14px;
+  }
+}

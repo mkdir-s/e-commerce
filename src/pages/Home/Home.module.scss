@@ -13,6 +13,7 @@
   &List {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
   }
   &Button {
     border: 1px solid #000;
@@ -73,4 +74,17 @@
   }
 }
 
-
+@media (max-width: 450px) {
+  .searchBar input {
+    width: 280px;
+  }
+  .pagination {
+    span {
+      margin: 0 10px;
+      font-size: 15px;
+    }
+    button {
+      padding: 5px 10px;
+    }
+  }
+}
