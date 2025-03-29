@@ -58,6 +58,22 @@
   font-size: 25px;
   font-weight: 600px;
 }
+.sortButtons {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.sortButton {
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.active {
+  background-color: #000;
+  color: #fff;
+}
 
 .cards {
   display: grid;

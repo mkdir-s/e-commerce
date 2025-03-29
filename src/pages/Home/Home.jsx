@@ -15,15 +15,20 @@ const Home = () => {
     const savedFilters = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     return savedFilters?.category || 'all';
   });
+  const [sortOrder, setSortOrder] = useState(() => {
+    const savedFilters = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    return savedFilters?.sortOrder || 'none';
+  });
 
   useEffect(() => {
     const filters = {
       category: selectedCategory,
       searchQuery,
       currentPage,
+      sortOrder
     };
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(filters));
-  }, [selectedCategory, searchQuery, currentPage]);
+  }, [selectedCategory, searchQuery, currentPage, sortOrder]);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -42,12 +47,20 @@ const Home = () => {
 
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    let result = products.filter((product) => {
       const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
       const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [products, selectedCategory, searchQuery]);
+
+    if (sortOrder === 'asc') {
+      result = [...result].sort((a, b) => a.price - b.price);
+    } else if (sortOrder === 'desc') {
+      result = [...result].sort((a, b) => b.price - a.price);
+    }
+
+    return result;
+  }, [products, selectedCategory, searchQuery, sortOrder]);
 
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const paginatedProducts = useMemo(() => {
@@ -82,6 +95,20 @@ const Home = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
+          <div className={styles.sortButtons}>
+              <button
+                className={`${styles.sortButton} ${sortOrder === 'asc' ? styles.active : ''}`}
+                onClick={() => setSortOrder(sortOrder === 'asc' ? 'none' : 'asc')}
+              >
+                Price ↑
+              </button>
+              <button
+                className={`${styles.sortButton} ${sortOrder === 'desc' ? styles.active : ''}`}
+                onClick={() => setSortOrder(sortOrder === 'desc' ? 'none' : 'desc')}
+              >
+                Price ↓
+              </button>
+            </div>
           <div className={styles.cards}>
             {paginatedProducts.length > 0 ? (
               paginatedProducts.map((product) => (
