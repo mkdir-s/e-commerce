@@ -71,6 +71,7 @@ const Home = () => {
                   <div className={styles.categoriesButton} onClick={() => setSelectedCategory(category)}>{category}</div>
                 )
               })}
+              <div className={styles.categoriesButton} onClick={() => setSelectedCategory('all')}>all</div>
             </div>
           </div>
           <div className={styles.searchBar}>
